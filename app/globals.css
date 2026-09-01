@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f8fafc;
+  --foreground: #18181b;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.28);
+}
+
+[data-copilotkit] {
+  --background: rgba(255, 255, 255, 0.94);
+  --foreground: #18181b;
+  --card: rgba(255, 255, 255, 0.96);
+  --card-foreground: #18181b;
+  --popover: rgba(255, 255, 255, 0.96);
+  --popover-foreground: #18181b;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #eef2ff;
+  --accent-foreground: #3730a3;
+  --border: rgba(39, 39, 42, 0.12);
+  --input: rgba(39, 39, 42, 0.12);
+  --ring: #818cf8;
+}
+
+.dark [data-copilotkit],
+[data-copilotkit].dark {
+  --background: rgba(24, 24, 27, 0.92);
+  --foreground: #fafafa;
+  --card: rgba(24, 24, 27, 0.96);
+  --card-foreground: #fafafa;
+  --popover: rgba(24, 24, 27, 0.96);
+  --popover-foreground: #fafafa;
+  --primary: #818cf8;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(255, 255, 255, 0.08);
+  --secondary-foreground: #fafafa;
+  --muted: rgba(255, 255, 255, 0.08);
+  --muted-foreground: #a1a1aa;
+  --accent: rgba(129, 140, 248, 0.14);
+  --accent-foreground: #c7d2fe;
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #a5b4fc;
+}
+
+button[data-copilotkit][data-slot="chat-toggle-button"] {
+  right: 1.5rem;
+  bottom: 1.5rem;
+  height: 3.75rem;
+  width: 3.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #ffffff;
+  box-shadow:
+    0 20px 45px rgba(79, 70, 229, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+}
+
+button[data-copilotkit][data-slot="chat-toggle-button"]:hover {
+  box-shadow:
+    0 24px 55px rgba(79, 70, 229, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset;
+}
+
+[data-copilot-popup] {
+  border-color: rgba(39, 39, 42, 0.12) !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.96)),
+    var(--background) !important;
+  backdrop-filter: blur(22px) saturate(145%);
+}
+
+.dark [data-copilot-popup] {
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  background:
+    linear-gradient(180deg, rgba(39, 39, 42, 0.96), rgba(9, 9, 11, 0.96)),
+    var(--background) !important;
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.48),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
