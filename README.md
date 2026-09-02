@@ -1,7 +1,37 @@
 # TaskMind
 
 TaskMind is a polished todo workspace built with Next.js, Tailwind CSS,
-Framer Motion, Zustand, and CopilotKit.
+Framer Motion, Zustand, and CopilotKit, powered by AI to help users create,
+organize, update, and remove tasks through a native chat popup.
+
+## Features
+
+- Animated todo dashboard with Inbox, Today, Overdue, Upcoming, and Completed views.
+- Fast local task state with Zustand and localStorage persistence.
+- Smooth Framer Motion interactions for adding, completing, deleting, and reordering tasks.
+- Dark mode by default with full light mode support.
+- CopilotKit AI chat popup wired to task tools for create, update, and delete actions.
+- Vercel-ready Copilot runtime using an OpenAI API key.
+
+## AI Examples
+
+Try these prompts in the TaskMind AI chat:
+
+```text
+Create a high priority task called Review launch checklist due tomorrow.
+```
+
+```text
+Update the billing dashboard task to high priority and add the tag planning.
+```
+
+```text
+Delete the finance emails task.
+```
+
+```text
+Show me which tasks are still open.
+```
 
 ## Getting Started
 
@@ -13,6 +43,15 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Scripts
+
+```bash
+npm run dev
+npm run lint
+npm run build
+npm run start
+```
 
 ## Environment
 
