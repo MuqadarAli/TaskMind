@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskMind
+
+TaskMind is a polished todo workspace built with Next.js, Tailwind CSS,
+Framer Motion, Zustand, and CopilotKit.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.env.local` for local development:
 
-## Learn More
+```bash
+OPENAI_API_KEY=your_openai_api_key
+```
 
-To learn more about Next.js, take a look at the following resources:
+For Vercel, add `OPENAI_API_KEY` in Project Settings > Environment Variables
+for Production, Preview, and Development, then redeploy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`INTELLIGENCE_API_KEY` and `NEXT_PUBLIC_COPILOTKIT_LICENSE_KEY` are optional.
+Without them, CopilotKit runs in SSE/in-memory mode.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## CI / CD
 
-## Deploy on Vercel
+GitHub Actions runs lint and production build checks on pull requests and every
+push to `main` using `.github/workflows/ci-cd.yml`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deployment is handled by the Vercel Git integration:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Push to `main` to trigger a production deployment.
+- Open a pull request to trigger a preview deployment.
+- If AI chat fails only on Vercel, check `/api/copilotkit/info` and confirm
+  `OPENAI_API_KEY` is configured in Vercel environment variables.
